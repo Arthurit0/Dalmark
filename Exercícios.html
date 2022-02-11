@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exercício Formulário</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form>
+      <div class="div-form">
+        <h2>Exercício Formulário</h2>
+
+        <div class="flex-container">
+          <label class="label-left" for="name">Nome</label>
+          <input class="text-box-right" type="text" />
+        </div>
+
+        <div class="flex-container">
+          <label class="label-left" for="email">E-mail</label>
+          <input class="text-box-right" type="text" />
+        </div>
+
+        <div class="flex-container">
+          <label class="label-left" for="bornDate">Data de Nascimento</label>
+          <input
+            class="calendar-right"
+            type="date"
+            id="birthday"
+            name="DataDeNasc"
+          />
+        </div>
+
+        <div class="flex-container">
+          <label class="label-left" for="city">Cidade</label>
+          <input class="text-box-right" type="text" />
+        </div>
+
+        <div class="flex-container">
+          <label class="label-left" for="state">Estado</label>
+          <input class="text-box-right" type="text" />
+        </div>
+
+        <div class="flex-container">
+          <label class="label-left" for="gender">Sexo</label>
+          <input
+            class="horizontal-radio"
+            type="radio"
+            id="masc"
+            name="gender"
+          />
+          <label for="Masc">Masculino</label>
+          <input
+            class="horizontal-radio"
+            type="radio"
+            id="femi"
+            name="gender"
+          />
+          <label for="Femi">Feminino</label>
+        </div>
+
+        <div class="flex-container">
+          <label class="label-left" for="active">Usuário Ativo?</label>
+          <input class="horizontal-checkbox" type="checkbox" id="active" />
+          <label for="active">Ativo</label>
+        </div>
+
+        <div class="flex-container-submit">
+          <input
+            class="submit-button"
+            type="submit"
+            id="submit"
+            value="Enviar"
+          />
+        </div>
+      </div>
+    </form>
+
+    <h2>Exercício Tabela</h2>
+
+    <table class="table-container">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Data de Nasc.</th>
+          <th>Cidade</th>
+          <th>Estado</th>
+          <th>Sexo</th>
+          <th>Ativo</th>
+          <th>Excluir</th>
+        </tr>
+      </thead>
+      <!-- User 1 -->
+      <tbody>
+        <tr>
+          <td>Arthur</td>
+          <td>arthur.silva@dalmark.com</td>
+          <td>27/02/2001</td>
+          <td>Joinville</td>
+          <td>Santa Catarina</td>
+          <td>Masculino</td>
+          <td>Sim</td>
+          <td><input type="button" id="delete" value="delete" /></td>
+        </tr>
+        <!-- User 2 -->
+        <tr>
+          <td>Flavia</td>
+          <td>Flavia@gmail.com</td>
+          <td>02/02/2022</td>
+          <td>Guarulhos</td>
+          <td>São Paulo</td>
+          <td>Feminino</td>
+          <td>Sim</td>
+          <td><input type="button" id="delete2" value="delete" /></td>
+        </tr>
+        <!-- User 3 -->
+        <tr>
+          <td>Pedro</td>
+          <td>Pedrooo@gmail.com</td>
+          <td>10/10/2010</td>
+          <td>São Paulo</td>
+          <td>São Paulo</td>
+          <td>Masculino</td>
+          <td>Não</td>
+          <td><input type="button" id="delete3" value="delete" /></td>
+        </tr>
+        <!-- User 4 -->
+        <tr>
+          <td>Tiago</td>
+          <td>tiago123@gmail.com</td>
+          <td>11/11/2011</td>
+          <td>Joinville</td>
+          <td>Santa Catarina</td>
+          <td>Masculino</td>
+          <td>Sim</td>
+          <td><input type="button" id="delete4" value="delete" /></td>
+        </tr>
+        <!-- User 5 -->
+        <tr>
+          <td>João</td>
+          <td>João321@gmail.com</td>
+          <td>03/03/2003</td>
+          <td>Joinville</td>
+          <td>Santa Catarina</td>
+          <td>Masculino</td>
+          <td>Sim</td>
+          <td><input type="button" id="delete5" value="delete" /></td>
+        </tr>
+      </tbody>
+      <!-- Footnote -->
+      <tfoot>
+        <tr>
+          <td>5 Users</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>4M, 1F</td>
+          <td>4 Active</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
