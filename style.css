@@ -24,11 +24,14 @@ td,
 th {
   font-size: large;
   text-align: left;
+  padding: 10px;
   border: 1px solid #656565;
   height: 50px;
 }
 
 table {
+  margin-left: 5%;
+  margin-right: 5%;
   width: 90%;
   border: 1px solid #656565;
   border-collapse: collapse;
@@ -37,6 +40,7 @@ table {
 
 tfoot {
   border: 1px solid #656565;
+  font-weight: bold;
 }
 
 .div-form {
