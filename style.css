@@ -19,30 +19,6 @@ form {
   margin-bottom: 20px;
 }
 
-table,
-td,
-th {
-  font-size: large;
-  text-align: left;
-  padding: 10px;
-  border: 1px solid #656565;
-  height: 50px;
-}
-
-table {
-  margin-left: 5%;
-  margin-right: 5%;
-  width: 90%;
-  border: 1px solid #656565;
-  border-collapse: collapse;
-  height: 30px;
-}
-
-tfoot {
-  border: 1px solid #656565;
-  font-weight: bold;
-}
-
 .div-form {
   margin: 2%;
   background-color: #ffffff;
@@ -109,3 +85,57 @@ tfoot {
 }
 
 /* Tabela */
+
+.div-table {
+  margin: 2%;
+  background-color: #ffffff;
+  border: 2px solid;
+  border-radius: 10px;
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.64);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.64);
+  padding: 10px;
+}
+
+table {
+  width: 90%;
+  height: 30px;
+  margin: 0px 5% 2% 5%;
+  border-collapse: collapse;
+  font-size: large;
+}
+
+tr:nth-child(odd) {
+  background-color: #f8f8f8;
+}
+
+/* Por algum motivo o background color não se aplica ao tfoot
+   tive que aplicar nas colunas (td) */
+th,
+tfoot td {
+  background-color: #ffffff;
+  font-weight: bold;
+}
+
+td,
+th {
+  text-align: left;
+  padding: 10px 0px 10px 10px;
+  border-bottom: 1px solid #ddd;
+  height: 50px;
+}
+
+.delete-button {
+  width: 85px;
+  height: 40px;
+  color: #f0f0f0;
+  font-size: medium;
+  background-color: rgb(218, 57, 57);
+  border: none;
+  border-bottom: 1px solid rgb(158, 158, 158);
+  border-right: 1px solid rgb(158, 158, 158);
+  border-radius: 5px;
+}
+
+.delete-button:active {
+  background-color: rgb(255, 50, 50);
+}
