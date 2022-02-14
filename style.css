@@ -39,11 +39,12 @@ form {
 }
 
 .label-left {
+  flex-grow: 0;
   margin-right: 25px;
 }
 
 .text-box-right {
-  flex-grow: 3;
+  flex-grow: 1;
   height: 30px;
   border: 1px solid #656565;
   border-radius: 4px;
@@ -57,6 +58,11 @@ form {
   border-radius: 4px;
   /* -webkit-box-shadow: 3px 3px 6px -1px rgba(0,0,0,0.64); 
     box-shadow: 3px 3px 6px -1px rgba(0,0,0,0.64); */
+}
+
+.select-box {
+  padding: 7px;
+  width: 15em;
 }
 
 .horizontal-radio {
@@ -98,6 +104,7 @@ form {
 
 table {
   width: 90%;
+  min-width: 40%;
   height: 30px;
   margin: 0px 5% 2% 5%;
   border-collapse: collapse;
@@ -105,7 +112,7 @@ table {
 }
 
 tr:nth-child(odd) {
-  background-color: #f8f8f8;
+  background-color: #ebebeb;
 }
 
 /* Por algum motivo o background color não se aplica ao tfoot
