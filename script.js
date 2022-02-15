@@ -1,48 +1,75 @@
-function validateForm() {
-  var x = document.forms["Formulario"]["text-box-name"].value;
-  var y = document.forms["Formulario"]["text-box-email"].value;
-  var z = document.forms["Formulario"]["combo-box-calendar"].value;
+function formatForm() {
+  var name = document.forms["Formulario"]["text-box-name"].value;
+  var email = document.forms["Formulario"]["text-box-email"].value;
+  var birthday = document.forms["Formulario"]["combo-box-calendar"].value;
+  var state = document.getElementById("state").value;
+  var city = document.getElementById("city").value;
 
-  if ((x == "") | (y == "") | (z == "")) {
+  if (
+    document.getElementById("masc").checked |
+    document.getElementById("fem").checked
+  ) {
+    var gender = document.getElementById("masc").checked
+      ? "Masculino"
+      : "Feminino";
+  } else {
+    gender = false;
+  }
+
+  var active = document.getElementById("active").checked ? "Ativo" : "Inativo";
+
+  return { name, email, birthday, state, city, gender, active };
+}
+
+function validateForm() {
+  const data = formatForm();
+
+  if (
+    (data.name == "") |
+    (data.email == "") |
+    (data.birthday == "") |
+    // (data.state == "empty-city") |
+    // (data.city == "empty-state") |
+    !data.gender
+  ) {
     alert("Todos os campos devem ser preenchidos!");
     return false;
   }
+
+  submit(data);
 }
 
-function deletar(r) {
+function submit(d) {
+  const formData = JSON.parse(localStorage.getItem("Form-Data")) || [];
+  formData.push(d);
+  localStorage.setItem("Form-Data", JSON.stringify(formData));
+}
+
+function populateOnTable() {
+  const arrayForm = JSON.parse(localStorage.getItem("Form-Data")) || [];
+
+  alert("" + arrayForm);
+
+  var table = document.getElementById("tbody");
+
+  arrayForm.forEach((dados) => {
+    var row = table.insertRow(-1);
+  });
+}
+
+function deleteRow(r) {
   var i = r.parentNode.parentNode.rowIndex;
   document.getElementById("table-exercicio2").deleteRow(i);
 }
 
-function storageInLocal() {
-  window.localStorage.setItem("Teste", "Teste");
+function remove(row) {
+  let index = row.parentNode.parentNode.rowIndex;
 
-  var name = document.forms["Formulario"]["text-box-name"].value;
-  var email = document.forms["Formulario"]["text-box-email"].value;
-  var birthday = document.forms["Formulario"]["combo-box-calendar"].value;
-  var gender;
-
-  if (document.querySelector("#masc:checked") != null) {
-    gender = "Masculino";
-  } else {
-    gender = "Feminino;";
-  }
-
-  var active;
-
-  if (document.querySelector("#active:checked") != null) {
-    active = "Ativo";
-  } else {
-    active = "Inativo";
-  }
-
-  var formData = { name, email, birthday, gender, active };
-  const Data = JSON.stringify(formData);
-  window.localStorage.setItem("Dados", Data);
-
-  return true;
+  formData.splice(index - 1, 1);
+  localStorage.setItem("formData", JSON.stringify(formData));
 }
 
+// API Estados
 const selectStates = document.querySelector("#states");
 const selectCities = document.querySelector("#cities");
 

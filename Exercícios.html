@@ -7,10 +7,7 @@
     <script src="script.js"></script>
   </head>
   <body>
-    <form
-      name="Formulario"
-      onsubmit="return (validateForm()) & (storageInLocal())"
-    >
+    <form name="Formulario" onsubmit="return validateForm()">
       <div class="div-form">
         <h2>Exercício Formulário</h2>
 
@@ -37,15 +34,15 @@
 
         <div class="flex-container">
           <label class="label-left" for="state">Estado</label>
-          <select class="select-box" name="state" id="state">
-            <option value="">Selecione um Estado</option>
+          <select class="select-box" name="selectbox-state" id="state">
+            <option value="empty-state">Selecione um Estado</option>
           </select>
         </div>
 
         <div class="flex-container">
           <label class="label-left" for="city">Cidade</label>
-          <select class="select-box" name="city" id="city" disabled>
-            <option value="">Selecione uma Cidade</option>
+          <select class="select-box" name="selectbox-city" id="city" disabled>
+            <option value="empty-city">Selecione uma Cidade</option>
           </select>
         </div>
 
@@ -83,6 +80,7 @@
         <div class="flex-container-submit">
           <input
             class="submit-button"
+            onclick="populateOnTable()"
             type="submit"
             id="submit"
             value="Enviar"
@@ -108,7 +106,7 @@
           </tr>
         </thead>
         <!-- User 1 -->
-        <tbody>
+        <tbody id="tbody">
           <tr>
             <td>Arthur</td>
             <td>arthur.silva@dalmark.com</td>
@@ -120,7 +118,7 @@
             <td>
               <input
                 nome="delete-button"
-                onclick="deletar(this)"
+                onclick="deleteRow(this)"
                 ;
                 class="delete-button"
                 type="button"
@@ -141,7 +139,7 @@
             <td>
               <input
                 nome="delete-button"
-                onclick="deletar(this)"
+                onclick="deleteRow(this)"
                 ;
                 class="delete-button"
                 type="button"
@@ -162,7 +160,7 @@
             <td>
               <input
                 nome="delete-button"
-                onclick="deletar(this)"
+                onclick="deleteRow(this)"
                 ;
                 class="delete-button"
                 type="button"
@@ -183,7 +181,7 @@
             <td>
               <input
                 nome="delete-button"
-                onclick="deletar(this)"
+                onclick="deleteRow(this)"
                 ;
                 class="delete-button"
                 type="button"
@@ -204,7 +202,7 @@
             <td>
               <input
                 nome="delete-button"
-                onclick="deletar(this)"
+                onclick="deleteRow(this)"
                 ;
                 class="delete-button"
                 type="button"
@@ -215,30 +213,6 @@
           </tr>
         </tbody>
         <!-- Footnote -->
-        <tfoot>
-          <tr>
-            <td>Nº de Usuários</td>
-            <td></td>
-            <td>Quantos<br />>18</td>
-            <td>
-              Nº de cada<br />
-              cidade
-            </td>
-            <td>
-              Nº de cada<br />
-              estado
-            </td>
-            <td>
-              Nº de homens<br />
-              e mulheres
-            </td>
-            <td>
-              Nº de ativos<br />
-              e inativos
-            </td>
-            <td></td>
-          </tr>
-        </tfoot>
       </table>
     </div>
   </body>
