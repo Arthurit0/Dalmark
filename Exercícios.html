@@ -13,12 +13,22 @@
 
         <div class="flex-container">
           <label class="label-left" for="name">Nome</label>
-          <input class="text-box-right" type="text" name="text-box-name" />
+          <input
+            class="text-box-right"
+            type="text"
+            name="text-box-name"
+            id="name"
+          />
         </div>
 
         <div class="flex-container">
           <label class="label-left" for="email">E-mail</label>
-          <input class="text-box-right" type="text" name="text-box-email" />
+          <input
+            class="text-box-right"
+            type="text"
+            name="text-box-email"
+            id="email"
+          />
         </div>
 
         <div class="flex-container">
@@ -28,7 +38,6 @@
             class="calendar-right"
             type="date"
             id="birthday"
-            name="DataDeNasc"
           />
         </div>
 
@@ -41,8 +50,10 @@
 
         <div class="flex-container">
           <label class="label-left" for="city">Cidade</label>
-          <select class="select-box" name="selectbox-city" id="city" disabled>
-            <option value="empty-city">Selecione uma Cidade</option>
+          <select class="select-box" name="selectbox-city" id="city">
+            <option value="empty-city" id="empty-city">
+              Selecione uma Cidade
+            </option>
           </select>
         </div>
 
@@ -80,7 +91,6 @@
         <div class="flex-container-submit">
           <input
             class="submit-button"
-            onclick="populateOnTable()"
             type="submit"
             id="submit"
             value="Enviar"
@@ -98,120 +108,15 @@
             <th>Nome</th>
             <th>Email</th>
             <th>Data de Nasc.</th>
-            <th>Cidade</th>
             <th>Estado</th>
+            <th>Cidade</th>
             <th>Sexo</th>
             <th>Ativo</th>
             <th>Excluir</th>
           </tr>
         </thead>
         <!-- User 1 -->
-        <tbody id="tbody">
-          <tr>
-            <td>Arthur</td>
-            <td>arthur.silva@dalmark.com</td>
-            <td>27/02/2001</td>
-            <td>Joinville</td>
-            <td>Santa Catarina</td>
-            <td>Masculino</td>
-            <td>Sim</td>
-            <td>
-              <input
-                nome="delete-button"
-                onclick="deleteRow(this)"
-                ;
-                class="delete-button"
-                type="button"
-                id="delete"
-                value="Deletar"
-              />
-            </td>
-          </tr>
-          <!-- User 2 -->
-          <tr>
-            <td>Flavia</td>
-            <td>Flavia@gmail.com</td>
-            <td>02/02/2022</td>
-            <td>Guarulhos</td>
-            <td>São Paulo</td>
-            <td>Feminino</td>
-            <td>Sim</td>
-            <td>
-              <input
-                nome="delete-button"
-                onclick="deleteRow(this)"
-                ;
-                class="delete-button"
-                type="button"
-                id="delete2"
-                value="Deletar"
-              />
-            </td>
-          </tr>
-          <!-- User 3 -->
-          <tr>
-            <td>Pedro</td>
-            <td>Pedrooo@gmail.com</td>
-            <td>10/10/2010</td>
-            <td>São Paulo</td>
-            <td>São Paulo</td>
-            <td>Masculino</td>
-            <td>Não</td>
-            <td>
-              <input
-                nome="delete-button"
-                onclick="deleteRow(this)"
-                ;
-                class="delete-button"
-                type="button"
-                id="delete3"
-                value="Deletar"
-              />
-            </td>
-          </tr>
-          <!-- User 4 -->
-          <tr>
-            <td>Tiago</td>
-            <td>tiago123@gmail.com</td>
-            <td>11/11/2011</td>
-            <td>Joinville</td>
-            <td>Santa Catarina</td>
-            <td>Masculino</td>
-            <td>Sim</td>
-            <td>
-              <input
-                nome="delete-button"
-                onclick="deleteRow(this)"
-                ;
-                class="delete-button"
-                type="button"
-                id="delete4"
-                value="Deletar"
-              />
-            </td>
-          </tr>
-          <!-- User 5 -->
-          <tr>
-            <td>João</td>
-            <td>João321@gmail.com</td>
-            <td>03/03/2003</td>
-            <td>Joinville</td>
-            <td>Santa Catarina</td>
-            <td>Masculino</td>
-            <td>Sim</td>
-            <td>
-              <input
-                nome="delete-button"
-                onclick="deleteRow(this)"
-                ;
-                class="delete-button"
-                type="button"
-                id="delete5"
-                value="Deletar"
-              />
-            </td>
-          </tr>
-        </tbody>
+        <tbody id="tbody"></tbody>
         <!-- Footnote -->
       </table>
     </div>

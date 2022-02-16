@@ -146,3 +146,11 @@ th {
 .delete-button:active {
   background-color: rgb(255, 50, 50);
 }
+
+.click-row {
+  cursor: pointer;
+}
+
+tr:hover {
+  background-color: rgb(213, 230, 238);
+}
