@@ -166,12 +166,13 @@ function dataLoad(arrayItem) {
     : (active.checked = false);
 
   document.getElementById("submit").addEventListener("click", function () {
+    var citySelected = document.getElementById("city").value;
     formData[index] = {
       name: document.getElementById("name").value,
       email: document.getElementById("email").value,
       birthday: document.getElementById("birthday").value,
       state: document.getElementById("state").value,
-      city: document.getElementById("city").value,
+      city: citySelected != "empty-city" ? citySelected : formData[index].city,
       gender: document.getElementById("masc").checked
         ? "Masculino"
         : "Feminino",

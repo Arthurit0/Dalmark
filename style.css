@@ -24,8 +24,6 @@ form {
   background-color: #ffffff;
   border: 2px solid rgb(133, 133, 133);
   border-radius: 10px;
-  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.64);
-  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.64);
 }
 
 .flex-container {
@@ -48,19 +46,26 @@ form {
   height: 30px;
   border: 1px solid #656565;
   border-radius: 4px;
-  /* -webkit-box-shadow: 3px 3px 6px -1px rgba(0,0,0,0.64); 
-    box-shadow: 3px 3px 6px -1px rgba(0,0,0,0.64); */
 }
 
 .calendar-right {
   height: 25px;
   border: 1px solid #656565;
   border-radius: 4px;
-  /* -webkit-box-shadow: 3px 3px 6px -1px rgba(0,0,0,0.64); 
-    box-shadow: 3px 3px 6px -1px rgba(0,0,0,0.64); */
+}
+
+.div-form,
+.div-table,
+.text-box-right,
+.calendar-right,
+.select-box,
+.submit-button {
+  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.64);
+  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.64);
 }
 
 .select-box {
+  border-radius: 4px;
   padding: 7px;
   width: 15em;
 }
@@ -86,8 +91,13 @@ form {
   margin-bottom: 20px;
   font-size: large;
   color: #656565;
-  /* -webkit-box-shadow: 3px 3px 6px -1px rgba(0,0,0,0.64); 
-    box-shadow: 3px 3px 6px -1px rgba(0,0,0,0.64); */
+  border: 1px solid #cccccc;
+}
+
+.submit-button:hover {
+  cursor: pointer;
+  background-color: rgb(213, 230, 238);
+  border: inherit;
 }
 
 /* Tabela */
@@ -97,8 +107,6 @@ form {
   background-color: #ffffff;
   border: 2px solid;
   border-radius: 10px;
-  -webkit-box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.64);
-  box-shadow: 3px 3px 6px -1px rgba(0, 0, 0, 0.64);
   padding: 10px;
 }
 
@@ -138,19 +146,26 @@ th {
   font-size: medium;
   background-color: rgb(218, 57, 57);
   border: none;
-  border-bottom: 1px solid rgb(158, 158, 158);
-  border-right: 1px solid rgb(158, 158, 158);
+  border-bottom: 2px solid rgb(158, 158, 158);
+  border-right: 2px solid rgb(158, 158, 158);
   border-radius: 5px;
 }
 
+.delete-button:hover {
+  cursor: pointer;
+  background-color: rgb(184, 53, 53);
+}
+
 .delete-button:active {
-  background-color: rgb(255, 50, 50);
+  border-bottom: none;
+  border-right: none;
 }
 
 .click-row {
   cursor: pointer;
 }
 
-tr:hover {
+tbody > tr:hover {
   background-color: rgb(213, 230, 238);
+  color: rgb(0, 92, 134);
 }
