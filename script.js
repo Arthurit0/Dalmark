@@ -95,9 +95,18 @@ function populateTable() {
 function removeRow(r) {
   const formData = JSON.parse(localStorage.getItem("Form-Data")) || [];
   let index = r.parentNode.parentNode.rowIndex - 1;
-  formData.splice(index, 1);
-  localStorage.setItem("Form-Data", JSON.stringify(formData));
-  window.location.reload();
+
+  const confirmation = confirm(
+    "Você tem certeza que deseja excluir este usuário?"
+  );
+
+  if (confirmation) {
+    formData.splice(index, 1);
+    localStorage.setItem("Form-Data", JSON.stringify(formData));
+    window.location.reload();
+  } else {
+    return false;
+  }
 }
 
 // API Estados
