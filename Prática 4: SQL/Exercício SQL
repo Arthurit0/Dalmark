@@ -1,0 +1,238 @@
+-- 1) Criar as tabelas conforme modelo da figura 1, utilizando o comando CREATE TABLE. Logo após criar cada tabela, utilizar o comando ALTER TABLE para criar as
+-- chaves primárias.
+-- 2) Criar as chaves primárias de cada tabela conforme modelo da figura 1.
+-- 3) Criar as constraints entre as tabelas conforme modelo da figura 1.
+
+create table funcionario (
+	cd_funcionario numeric(3) not null,
+	nm_funcionario char(60) null,
+	dt_admissao date null,
+	nr_fone numeric null,
+	cd_departamento char(6) null
+	);
+	
+create table departamento (
+	cd_departamento char(6) not null,
+	ds_departamento char(30) null
+	);
+	
+create table produto (
+	cd_produto numeric(3) not null,
+	ds_produto char(40) null 
+	);
+
+create table fornecedor(
+	cd_fornecedor numeric(3) not null,
+	nm_fornecedor char(60) null
+	);
+
+create table produtofornec (
+	cd_produto numeric(3) not null,
+	cd_fornecedor numeric (3) not null,
+	vl_preco_produto numeric (7,2) null,
+	vl_aumento_produto numeric (7,2) null
+	);
+
+create table refeicao (
+	cd_refeicao numeric(5) not null,
+	dt_refeicao date null,
+	cd_funcionario numeric (3) null
+	);
+	
+create table itensrefeicao (
+	cd_refeicao numeric(5) not null,
+	nr_seq_refeicao numeric(2) not null,
+	cd_produto numeric(3) null,
+	qt_item_refeicao numeric(5,2) null
+	);
+-- Adicionando chaves primárias 
+
+alter table funcionario add primary key (cd_funcionario);
+alter table departamento  add primary key (cd_departamento);
+alter table produto add primary key (cd_produto);
+alter table fornecedor add primary key (cd_fornecedor);
+alter table produtofornec add primary key (cd_produto, cd_fornecedor);
+alter table refeicao add primary key (cd_refeicao);
+alter table itensrefeicao add primary key (cd_refeicao, nr_seq_refeicao);
+
+
+-- Adicionando chaves estrangeiras
+
+alter table funcionario add foreign key (cd_departamento) references departamento;
+alter table refeicao add foreign key (cd_funcionario) references funcionario on delete cascade;
+alter table itensrefeicao add foreign key (cd_refeicao) references refeicao on delete cascade, add foreign key (cd_produto) references produto;
+alter table produtofornec add foreign key (cd_produto) references produto, add foreign key (cd_fornecedor) references fornecedor;
+
+-- 4) Utilizando o comando ALTER TABLE:
+
+-- a) Na tabela FORNECEDOR adicione a coluna end_fornec, tipo VARCHAR(100) NULL;
+
+alter table fornecedor add end_fornecedor varchar(100) null;
+
+-- b) Na tabela PRODUTOFORNEC elimine a coluna VL_AUMENTO_PRODUTO;
+
+alter table produtofornec drop vl_aumento_produto;
+
+-- c) Na tabela FUNCIONARIO aumento o tamanho do campo NM_FUNCIONARIO para VARCHAR(80);
+
+alter table funcionario alter column nm_funcionario type varchar(80);
+
+-- 5) Na tabela FUNCIONARIO, criar índice com a coluna CD_DEPARTAMENTO. 
+--    Na tabela ITENSREFEICAO, criar índice com a coluna CD_PRODUTO.
+
+create index funcionario_cd_depart on funcionario(cd_departamento);
+create index itens_ref_prodt on itensrefeicao (cd_produto);
+
+-- Parte II
+
+-- 1) Inserir no mínimo 10 registros em cada uma das tabelas utilizando o comando INSERT.
+
+insert into departamento (cd_departamento, ds_departamento) values ('C29E', 'negocios');
+insert into departamento (cd_departamento, ds_departamento) values ('E49E', 'exportacao');
+insert into departamento (cd_departamento, ds_departamento) values ('D11O', 'distribuicao');
+insert into departamento (cd_departamento, ds_departamento) values ('P02V', 'patrocinio');
+insert into departamento (cd_departamento, ds_departamento) values ('L28X', 'limpeza');
+insert into departamento (cd_departamento, ds_departamento) values ('L99B', 'logistica');
+insert into departamento (cd_departamento, ds_departamento) values ('M76Q', 'marketing');
+insert into departamento (cd_departamento, ds_departamento) values ('C90K', 'comunicacao');
+insert into departamento (cd_departamento, ds_departamento) values ('M30A', 'manutencao');
+insert into departamento (cd_departamento, ds_departamento) values ('C22A', 'chefia');
+
+insert into funcionario (cd_funcionario, nm_funcionario ,dt_admissao, nr_fone, cd_departamento) values (001,'Arthur','1999-12-12', 99321234, 'C29E');
+insert into funcionario (cd_funcionario, nm_funcionario ,nr_fone, cd_departamento) values (002, 'David',12345678,'D11O');
+insert into funcionario (cd_funcionario, nm_funcionario ,dt_admissao, nr_fone, cd_departamento) values (003, 'Isaac','2003-06-05', 13579246, 'C22A');
+insert into funcionario (cd_funcionario, nm_funcionario ,dt_admissao, nr_fone, cd_departamento) values (004, 'Pedro','2007-10-10', 123, 'C29E');
+insert into funcionario (cd_funcionario, nm_funcionario ,dt_admissao, nr_fone, cd_departamento) values (005, 'Tiago','2016-01-15', 321, 'M76Q');
+insert into funcionario (cd_funcionario, nm_funcionario ,dt_admissao, nr_fone, cd_departamento) values (006, 'João','2001-02-27', 112233, 'C90K');
+insert into funcionario (cd_funcionario, nm_funcionario ,cd_departamento) values (007, 'Bond, James Bond','P02V');
+insert into funcionario (cd_funcionario, nm_funcionario ,dt_admissao, nr_fone, cd_departamento) values (008, 'José','2019-09-19', 345543, 'L28X');
+insert into funcionario (cd_funcionario, nm_funcionario ,dt_admissao, nr_fone, cd_departamento) values (009, 'Solanghy','2022-02-02', 777888, 'M30A');
+insert into funcionario (cd_funcionario, nm_funcionario ,dt_admissao, cd_departamento) values (010, 'Anderson','2010-10-10', 'E49E');
+
+insert into produto (cd_produto, ds_produto) values (321, 'Arroz');
+insert into produto (cd_produto, ds_produto) values (032, 'Carne de Porco');
+insert into produto (cd_produto, ds_produto) values (997, 'Alface');
+insert into produto (cd_produto, ds_produto) values (232, 'Tomate');
+insert into produto (cd_produto, ds_produto) values (876, 'Feijão');
+insert into produto (cd_produto, ds_produto) values (396, 'Carne de Vaca');
+insert into produto (cd_produto, ds_produto) values (112, 'Pepino');
+insert into produto (cd_produto, ds_produto) values (235, 'Farofa');
+insert into produto (cd_produto, ds_produto) values (813, 'Macarrão');
+insert into produto (cd_produto, ds_produto) values (213, 'Carne de Galinha');
+
+insert into fornecedor (cd_fornecedor, nm_fornecedor) values (123, 123);
+insert into fornecedor (cd_fornecedor, nm_fornecedor) values (456, 3333);
+insert into fornecedor (cd_fornecedor, nm_fornecedor) values (789, 4343434);
+insert into fornecedor (cd_fornecedor, nm_fornecedor) values (987, 1111111);
+insert into fornecedor (cd_fornecedor, nm_fornecedor) values (654, 123581321);
+insert into fornecedor (cd_fornecedor, nm_fornecedor) values (321, 321321321);
+insert into fornecedor (cd_fornecedor, nm_fornecedor) values (135, 222221);
+insert into fornecedor (cd_fornecedor, nm_fornecedor) values (246, 123568);
+insert into fornecedor (cd_fornecedor, nm_fornecedor) values (790, 7777777);
+insert into fornecedor (cd_fornecedor, nm_fornecedor) values (810, 9876543210);
+
+insert into refeicao (cd_refeicao, dt_refeicao, cd_funcionario) values (1231 ,'2022-01-10',1);
+insert into refeicao (cd_refeicao, dt_refeicao, cd_funcionario) values (3211 ,'2021-12-12',1);
+insert into refeicao (cd_refeicao, dt_refeicao, cd_funcionario) values (3333 ,'2000-01-01',1);
+insert into refeicao (cd_refeicao, dt_refeicao, cd_funcionario) values (4343 ,'2002-02-02',3);
+insert into refeicao (cd_refeicao, dt_refeicao, cd_funcionario) values (3232 ,'2003-03-03',3);
+insert into refeicao (cd_refeicao, dt_refeicao, cd_funcionario) values (2121 ,'2004-12-04',3);
+insert into refeicao (cd_refeicao, dt_refeicao, cd_funcionario) values (5454 ,'2016-06-06',5);
+insert into refeicao (cd_refeicao, dt_refeicao, cd_funcionario) values (6565 ,'2019-02-09',5);
+insert into refeicao (cd_refeicao, cd_funcionario) values (7676,5);
+insert into refeicao (cd_refeicao, cd_funcionario) values (8787,5);
+
+insert into itensrefeicao (cd_refeicao, nr_seq_refeicao, cd_produto, qt_item_refeicao) values (8787 ,2, 321, 2);
+insert into itensrefeicao (cd_refeicao, nr_seq_refeicao, cd_produto, qt_item_refeicao) values (7676 ,4, 321 , 3);
+insert into itensrefeicao (cd_refeicao, nr_seq_refeicao, cd_produto, qt_item_refeicao) values (6565 ,6, 997,1 );
+insert into itensrefeicao (cd_refeicao, nr_seq_refeicao, cd_produto, qt_item_refeicao) values (5454 ,8, 997 ,1 );
+insert into itensrefeicao (cd_refeicao, nr_seq_refeicao, cd_produto, qt_item_refeicao) values (2121 ,9, 396 , 1);
+insert into itensrefeicao (cd_refeicao, nr_seq_refeicao, cd_produto, qt_item_refeicao) values (3232 ,7, 321 , 2);
+insert into itensrefeicao (cd_refeicao, nr_seq_refeicao, cd_produto, qt_item_refeicao) values (4343 ,5, 213 , 3);
+insert into itensrefeicao (cd_refeicao, nr_seq_refeicao, cd_produto, qt_item_refeicao) values (3333 ,3, 235, 2);
+insert into itensrefeicao (cd_refeicao, nr_seq_refeicao, cd_produto, qt_item_refeicao) values (3211 ,1, 032 , 1);
+insert into itensrefeicao (cd_refeicao, nr_seq_refeicao, cd_produto, qt_item_refeicao) values (1231 ,10,321 , 5);
+
+insert into produtofornec (cd_produto, cd_fornecedor, vl_preco_produto) values (321 , 123, 3);
+insert into produtofornec (cd_produto, cd_fornecedor, vl_preco_produto) values (213, 321, 1.75);
+insert into produtofornec (cd_produto, cd_fornecedor, vl_preco_produto) values (396 , 456, 2);
+insert into produtofornec (cd_produto, cd_fornecedor, vl_preco_produto) values (032 , 246, 5);
+insert into produtofornec (cd_produto, cd_fornecedor, vl_preco_produto) values (112 , 789, 7);
+insert into produtofornec (cd_produto, cd_fornecedor, vl_preco_produto) values (876 , 790, 5);
+insert into produtofornec (cd_produto, cd_fornecedor, vl_preco_produto) values (232 , 987, 2.75);
+insert into produtofornec (cd_produto, cd_fornecedor, vl_preco_produto) values (813 , 810, 1);
+insert into produtofornec (cd_produto, cd_fornecedor, vl_preco_produto) values (997 , 654, 2);
+insert into produtofornec (cd_produto, cd_fornecedor, vl_preco_produto) values (321 , 135, 5);
+
+-- 2) Atualizar o valor da coluna QT_ITEM_REFEICAO com o valor 1 para todos os registros da tabela REFEICAO
+
+update itensrefeicao set qt_item_refeicao = 1;
+
+-- 3) Excluir funcionário(s) com data de admissão entre 01/01/2018 e 31/03/2018.
+
+update funcionario set dt_admissao = '2018-02-02' where cd_funcionario = 6;
+
+-- funcionario com cd_funcionario = 6 deve ser excluido:
+
+delete from funcionario where dt_admissao between '2018-01-01' and '2018-03-31';
+
+-- 4) Selecionar código, nome e departamento do último funcionário contratado.
+
+select cd_funcionario, nm_funcionario, cd_departamento from funcionario where dt_admissao in
+	(select max(dt_admissao) from funcionario);
+
+-- 5) Selecionar código, nome e data da refeição dos funcionários que já fizeram alguma refeição e ordená-los por data de admissão e por nome em ordem alfabética
+
+select funcionario.cd_funcionario, nm_funcionario, refeicao.dt_refeicao
+from funcionario
+inner join
+refeicao on funcionario.cd_funcionario = refeicao.cd_funcionario
+order by dt_admissao asc, nm_funcionario asc;
+
+-- 6) Selecionar somente os funcionários que não fizeram refeição alguma
+
+select funcionario.cd_funcionario, nm_funcionario, refeicao.dt_refeicao
+from funcionario
+left join
+refeicao on funcionario.cd_funcionario = refeicao.cd_funcionario
+where dt_refeicao is null and cd_refeicao is null;
+
+-- 7) Selecionar código, nome e data da refeição dos funcionários, independentemente se o funcionário fez ou não fez refeição
+
+select distinct funcionario.cd_funcionario, nm_funcionario, refeicao.dt_refeicao
+from funcionario
+left join
+refeicao on funcionario.cd_funcionario = refeicao.cd_funcionario
+
+-- 8) Selecionar o funcionário mais antigo e o funcionário mais novo (último contratado) utilizando o comando UNION
+
+select * from funcionario where dt_admissao in (select min(dt_admissao) from funcionario) 
+union select * from funcionario where dt_admissao in (select max(dt_admissao) from funcionario) 
+
+-- 9) Selecionar os funcionários que comecem com a letra P e também os funcionário cujo sobrenome termine com a letra S.
+
+select * from funcionario where nm_funcionario like 'P%'
+union select * from funcionario where nm_funcionario like '%s'
+
+-- 10) Selecionar o código do departamento e o número de funcionários por departamento.
+
+select funcionario.cd_departamento, count(funcionario.cd_departamento) from funcionario
+left join departamento on departamento.cd_departamento = funcionario.cd_departamento
+group by funcionario.cd_departamento
+
+-- 11) Selecionar código do funcionário e nome do funcionário que teve em sua refeição o produto ‘ARROZ’.
+
+select refeicao.cd_funcionario, funcionario.nm_funcionario from funcionario
+inner join refeicao 
+on refeicao.cd_funcionario = funcionario.cd_funcionario
+inner join itensrefeicao
+on itensrefeicao.cd_refeicao = refeicao.cd_refeicao
+inner join produto
+on produto.cd_produto = itensrefeicao.cd_produto 
+where produto.ds_produto = 'Arroz';
+
+-- 12) Selecionar os produtos cujos preços estejam entre R$ 1,50 e R$ 2,50.
+
+select * from produto 
+inner join produtofornec on produto.cd_produto = produtofornec.cd_produto
+where produtofornec.vl_preco_produto between 1.50 and 2.50;

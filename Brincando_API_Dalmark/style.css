@@ -1,0 +1,10 @@
+.divtable {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  margin-left: 20%;
+}
+
+th {
+  padding-right: 20px;
+}
