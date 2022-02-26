@@ -4,34 +4,54 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      status: true,
+      email: "teste@teste.com",
+      senha: "",
+      sexo: "Masculino",
     };
-    this.sair = this.sair.bind(this);
-    this.entrar = this.entrar.bind(this);
+
+    this.trocaEmail = this.trocaEmail.bind(this);
+    this.trocaSexo = this.trocaSexo.bind(this);
   }
 
-  sair() {
-    this.setState({ status: false });
+  trocaEmail(evt) {
+    let valorDigitado = evt.target.value; // Valor digitado recebe o que está na caixa de texto
+    this.setState({ email: valorDigitado }); // email recebe Valor digitado
   }
 
-  entrar() {
-    this.setState({ status: true });
+  trocaSexo(evt) {
+    this.setState({ sexo: evt.target.value }); //Aqui fizemos mais diretamente a atribuição
   }
 
   render() {
     return (
       <div>
-        {this.state.status ? (
-          <div>
-            <h2>Bem vindo ao sistema</h2>
-            <button onClick={this.sair}>Sair no sistema</button>
-          </div>
-        ) : (
-          <div>
-            <h2>Olá visitante, faça login</h2>
-            <button onClick={this.entrar}>Entrar no sistema</button>
-          </div>
-        )}
+        <h2>Login</h2>
+        Email:
+        <input
+          type="email"
+          name="email"
+          value={this.state.email} // Utilizamos Javascript nos values, não string fixas como em HTML
+          onChange={this.trocaEmail} //Função que é executada a cada alteração. Função externa trocaEmail(evt) cuida das alterações
+        ></input>
+        <br />
+        Senha:
+        <input
+          type="password"
+          name="senha"
+          value={this.state.senha}
+          onChange={(evt) => this.setState({ senha: evt.target.value })} //Aqui fizemos uma função anônima para receber o valor digitado
+        ></input>
+        <br />
+        Sexo:
+        <select name="sexo" value={this.state.sexo} onChange={this.trocaSexo}>
+          <option value="Masculino">Masculino</option>
+          <option value="Feminino">Feminino</option>
+        </select>
+        <div>
+          <h3>{this.state.email}</h3>
+          <h3>{this.state.senha}</h3>
+          <h3>{this.state.sexo}</h3>
+        </div>
       </div>
     );
   }
