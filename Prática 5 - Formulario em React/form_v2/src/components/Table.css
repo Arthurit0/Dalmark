@@ -1,0 +1,71 @@
+.div-table {
+  margin: 2%;
+  background-color: #ffffff;
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+table {
+  width: 90%;
+  min-width: 40%;
+  height: 30px;
+  margin: 0px 5% 2% 5%;
+  border-collapse: collapse;
+  font-size: large;
+}
+
+tr:nth-child(odd) {
+  background-color: #ebebeb;
+}
+
+/* Por algum motivo o background color não se aplica ao tfoot
+     tive que aplicar nas colunas (td) */
+th,
+tfoot td {
+  background-color: #ffffff;
+  font-weight: bold;
+}
+
+td,
+th {
+  text-align: left;
+  padding: 10px 0px 10px 10px;
+  border-bottom: 1px solid #ddd;
+  height: 50px;
+}
+
+.delete-button {
+  width: 85px;
+  height: 40px;
+  color: #f0f0f0;
+  font-size: medium;
+  background-color: rgb(218, 57, 57);
+  border: none;
+  border-bottom: 2px solid rgb(158, 158, 158);
+  border-right: 2px solid rgb(158, 158, 158);
+  border-radius: 5px;
+}
+
+.click-row,
+.select-box,
+.calendar-right,
+.horizontal-radio,
+.horizontal-checkbox,
+.delete-button:hover {
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: rgb(184, 53, 53);
+}
+
+.delete-button:active {
+  border-bottom: none;
+  border-right: none;
+}
+
+tbody > tr:hover {
+  background-color: rgb(213, 230, 238);
+  color: rgb(0, 92, 134);
+}
