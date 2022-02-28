@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Table.css";
+import "./index.css";
 
 class Table extends Component {
   constructor(props) {
@@ -33,6 +33,8 @@ class Table extends Component {
       );
     });
   }
+
+  dataLoad() {}
 
   removeRow(index) {
     const formData = JSON.parse(localStorage.getItem("Form-Data")) || [];
