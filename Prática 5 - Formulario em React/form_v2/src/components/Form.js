@@ -60,9 +60,7 @@ class Form extends Component {
           <h1>Exercício Formulário</h1>
 
           <div className="flex-container">
-            <label className="label-left" for="name">
-              Nome
-            </label>
+            <label className="label-left">Nome</label>
             <input
               className="text-box-right"
               type="text"
@@ -75,9 +73,7 @@ class Form extends Component {
           </div>
 
           <div className="flex-container">
-            <label className="label-left" for="email">
-              E-mail
-            </label>
+            <label className="label-left">E-mail</label>
             <input
               className="text-box-right"
               type="text"
@@ -90,9 +86,7 @@ class Form extends Component {
           </div>
 
           <div className="flex-container">
-            <label className="label-left" for="bornDate">
-              Data de Nascimento
-            </label>
+            <label className="label-left">Data de Nascimento</label>
             <input
               className="calendar-right"
               type="date"
@@ -103,9 +97,7 @@ class Form extends Component {
           </div>
 
           <div className="flex-container">
-            <label className="label-left" for="state">
-              Estado
-            </label>
+            <label className="label-left">Estado</label>
             <select
               className="select-box"
               name="selectbox-state"
@@ -118,9 +110,7 @@ class Form extends Component {
           </div>
 
           <div className="flex-container">
-            <label className="label-left" for="city">
-              Cidade
-            </label>
+            <label className="label-left">Cidade</label>
             <select
               className="select-box"
               name="selectbox-city"
@@ -135,9 +125,7 @@ class Form extends Component {
           </div>
 
           <div className="flex-container">
-            <label className="label-left" for="gender">
-              Sexo
-            </label>
+            <label className="label-left">Sexo</label>
             <input
               className="horizontal-radio"
               type="radio"
@@ -148,7 +136,7 @@ class Form extends Component {
                 this.setState({ sexo: evt.target.value });
               }}
             />
-            <label for="masc">Masculino</label>
+            <label>Masculino</label>
             <input
               className="horizontal-radio"
               type="radio"
@@ -159,20 +147,18 @@ class Form extends Component {
                 this.setState({ sexo: evt.target.value });
               }}
             />
-            <label for="fem">Feminino</label>
+            <label>Feminino</label>
           </div>
 
           <div className="flex-container">
-            <label className="label-left" for="active">
-              Usuário Ativo?
-            </label>
+            <label className="label-left">Usuário Ativo?</label>
             <input
               className="horizontal-checkbox"
               type="checkbox"
               id="active"
               onChange={this.changeAtivoState}
             />
-            <label for="active">Ativo</label>
+            <label>Ativo</label>
           </div>
 
           <div className="flex-container-submit">

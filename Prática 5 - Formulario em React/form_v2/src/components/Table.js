@@ -9,6 +9,7 @@ class Table extends Component {
 
   populateTable() {
     const formData = JSON.parse(localStorage.getItem("Form-Data")) || [];
+    var cont = 1;
     return formData.map((data, i) => {
       return (
         <tr key={i}>
@@ -21,9 +22,9 @@ class Table extends Component {
           <td>{data.ativo}</td>
           <td>
             <input
-              class="delete-button"
+              className="delete-button"
               type="button"
-              id="delete"
+              id={"delete" + cont}
               value="Deletar"
               onClick={(i) => this.removeRow(i)}
             />
@@ -67,8 +68,7 @@ class Table extends Component {
               <th>Excluir</th>
             </tr>
           </thead>
-          {this.populateTable()}
-          <tbody id="table-body"></tbody>
+          <tbody id="table-body">{this.populateTable()}</tbody>
         </table>
       </div>
     );
