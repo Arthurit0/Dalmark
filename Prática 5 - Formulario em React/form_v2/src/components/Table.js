@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./index.css";
+import "./Table.css";
 
 class Table extends Component {
   constructor(props) {
@@ -55,7 +55,7 @@ class Table extends Component {
   render() {
     return (
       <div className="div-table">
-        <h1>Exercício Tabela</h1>
+        <h1>Tabela em React</h1>
 
         <table className="table-container" id="table-exercicio2">
           <thead>

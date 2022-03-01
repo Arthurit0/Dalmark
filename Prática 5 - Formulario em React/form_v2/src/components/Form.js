@@ -1,12 +1,16 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import DropdownCidades from "./DropdownCidades";
 import DropdownEstados from "./DropdownEstados";
-import "./index.css";
+import "./Form.css";
 
 function Form() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [dataNasc, setDataNasc] = useState("");
+  const [estado, setEstado] = useState("");
+  const [cidade, setCidade] = useState("");
+  const [sexo, setSexo] = useState("");
+  const [ativo, setAtivo] = useState("Inativo");
 
   // constructor(props) {
   //   super(props);
@@ -28,18 +32,23 @@ function Form() {
   const [formValues, setFormValues] = useState({});
 
   const handleInputChange = (evt) => {
+    setEstado(evt.target.value);
     evt.preventDefault();
+    const { value, name } = evt.target;
+    setFormValues({ ...formValues, [name]: value });
   };
 
+  const collectCidade = (evt) => {
+    setCidade(evt.target.value);
+  };
   function validateForm() {
-    let verif = this.state;
     if (
-      verif.nome === "" ||
-      verif.email === "" ||
-      verif.dataNasc === "" ||
-      // verif.estado === "" ||
-      // verif.cidade === "" ||
-      verif.sexo === ""
+      nome === "" ||
+      email === "" ||
+      dataNasc === "" ||
+      // estado === "" ||
+      // cidade === "" ||
+      sexo === ""
     ) {
       alert("Erro: Todos os campos devem ser preenchidos!");
       return false;
@@ -49,18 +58,19 @@ function Form() {
   }
 
   function formSubmit() {
-    if (this.validateForm()) {
+    if (validateForm()) {
+      const newData = { nome, email, dataNasc, estado, cidade, sexo, ativo };
       const formData = JSON.parse(localStorage.getItem("Form-Data")) || [];
-      formData.push(this.state);
+      formData.push(newData);
       localStorage.setItem("Form-Data", JSON.stringify(formData));
     }
   }
 
   function changeAtivoState() {
-    if (this.state.ativo === "Inativo") {
-      this.setState({ ativo: "Ativo" });
+    if (ativo === "Inativo") {
+      setAtivo("Ativo");
     } else {
-      this.setState({ ativo: "Inativo" });
+      setAtivo("Inativo");
     }
   }
 
@@ -68,7 +78,7 @@ function Form() {
   return (
     <form name="Formulario">
       <div className="div-form">
-        <h1>Exercício Formulário</h1>
+        <h1>Formulário em React</h1>
 
         <div className="flex-container">
           <label className="label-left">Nome</label>
@@ -76,10 +86,8 @@ function Form() {
             className="text-box-right"
             type="text"
             id="name"
-            value={this.state.nome}
-            onChange={(evt) => {
-              this.setState({ nome: evt.target.value });
-            }}
+            value={nome}
+            onChange={(evt) => setNome(evt.target.value)}
           />
         </div>
 
@@ -89,9 +97,9 @@ function Form() {
             className="text-box-right"
             type="text"
             id="email"
-            value={this.state.email}
+            value={email}
             onChange={(evt) => {
-              this.setState({ email: evt.target.value });
+              setEmail(evt.target.value);
             }}
           />
         </div>
@@ -102,8 +110,10 @@ function Form() {
             className="calendar-right"
             type="date"
             id="birthday"
-            value={this.state.dataNasc}
-            onChange={(evt) => this.setState({ dataNasc: evt.target.value })}
+            value={dataNasc}
+            onChange={(evt) => {
+              setDataNasc(evt.target.value);
+            }}
           />
         </div>
 
@@ -114,7 +124,7 @@ function Form() {
 
         <div className="flex-container">
           <label className="label-left">Cidade</label>
-          <DropdownCidades />
+          <DropdownCidades state={formValues.state} onChange={collectCidade} />
         </div>
 
         <div className="flex-container">
@@ -126,7 +136,7 @@ function Form() {
             name="gender"
             value="Masculino"
             onChange={(evt) => {
-              this.setState({ sexo: evt.target.value });
+              setSexo(evt.target.value);
             }}
           />
           <label>Masculino</label>
@@ -137,7 +147,7 @@ function Form() {
             name="gender"
             value="Feminino"
             onChange={(evt) => {
-              this.setState({ sexo: evt.target.value });
+              setSexo(evt.target.value);
             }}
           />
           <label>Feminino</label>
@@ -149,7 +159,7 @@ function Form() {
             className="horizontal-checkbox"
             type="checkbox"
             id="active"
-            onChange={this.changeAtivoState}
+            onChange={changeAtivoState}
           />
           <label>Ativo</label>
         </div>
@@ -157,7 +167,7 @@ function Form() {
         <div className="flex-container-submit">
           <input
             className="submit-button"
-            onClick={this.formSubmit}
+            onClick={formSubmit}
             type="submit"
             id="submit"
             value="Enviar"
@@ -166,7 +176,6 @@ function Form() {
       </div>
     </form>
   );
-  // }
 }
 
 export default Form;

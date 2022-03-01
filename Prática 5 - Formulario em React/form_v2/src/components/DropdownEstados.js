@@ -1,6 +1,5 @@
-import Form from "..";
 import { useEffect, useState } from "react";
-import { fetchEstados } from "../../../helpers/ibge";
+import { fetchEstados } from "../helpers/ibge";
 
 const DropdownEstados = ({ onChange = () => {} }) => {
   const [estados, setEstados] = useState([]);
@@ -12,15 +11,7 @@ const DropdownEstados = ({ onChange = () => {} }) => {
   }, []);
 
   return (
-    <select
-      className="select-box"
-      htmlFor="estado"
-      name="selectbox-state"
-      id="state"
-      onChange={onChange}
-      // value={Form.state.estado}
-      //   onChange={(evt) => Form.setState({ estado: evt.target.value })}
-    >
+    <select className="select-box" name="state" id="state" onChange={onChange}>
       <option value="empty-state" id="empty-state">
         Selecione um Estado
       </option>

@@ -28,13 +28,13 @@ form {
   flex-direction: row;
   /* justify-content: center; */
   align-items: baseline;
-  margin: 20px;
+  margin: 1.3em;
   margin-left: 25%;
   margin-right: 25%;
 }
 
 .label-left {
-  margin-right: 25px;
+  margin-right: 1.5em;
 }
 
 .text-box-right,
