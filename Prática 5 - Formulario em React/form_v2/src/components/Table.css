@@ -3,13 +3,11 @@
   background-color: #ffffff;
   border: 2px solid;
   border-radius: 10px;
-  padding: 10px;
 }
 
 table {
   width: 90%;
   min-width: 40%;
-  height: 30px;
   margin: 0px 5% 2% 5%;
   border-collapse: collapse;
   font-size: large;
@@ -29,15 +27,17 @@ tfoot td {
 
 td,
 th {
-  text-align: left;
+  text-align: center;
   padding: 10px 0px 10px 10px;
   border-bottom: 1px solid #ddd;
-  height: 50px;
 }
 
-.delete-button {
-  width: 85px;
-  height: 40px;
+.confirm-button,
+.delete-button,
+.edit-button,
+.cancel-button {
+  width: 75px;
+  height: 35px;
   color: #f0f0f0;
   font-size: medium;
   background-color: rgb(218, 57, 57);
@@ -47,12 +47,26 @@ th {
   border-radius: 5px;
 }
 
+.edit-button,
+.confirm-button {
+  background-color: rgb(53, 62, 199);
+  margin-bottom: 10px;
+}
+
+.confirm-button {
+  width: 6em;
+  background-color: rgb(45, 158, 45);
+}
+
 .click-row,
 .select-box,
 .calendar-right,
 .horizontal-radio,
 .horizontal-checkbox,
-.delete-button:hover {
+.delete-button:hover,
+.edit-button:hover,
+.confirm-button:hover,
+.cancel-button:hover {
   cursor: pointer;
 }
 
@@ -60,7 +74,10 @@ th {
   background-color: rgb(184, 53, 53);
 }
 
-.delete-button:active {
+.edit-button:active,
+.delete-button:active,
+.confirm-button:active,
+.cancel-button:active {
   border-bottom: none;
   border-right: none;
 }
@@ -68,4 +85,10 @@ th {
 tbody > tr:hover {
   background-color: rgb(213, 230, 238);
   color: rgb(0, 92, 134);
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

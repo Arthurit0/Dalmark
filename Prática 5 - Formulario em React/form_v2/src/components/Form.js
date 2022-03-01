@@ -12,23 +12,6 @@ function Form() {
   const [sexo, setSexo] = useState("");
   const [ativo, setAtivo] = useState("Inativo");
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     nome: "",
-  //     email: "",
-  //     dataNasc: "",
-  //     estado: "",
-  //     cidade: "",
-  //     sexo: "",
-  //     ativo: "Inativo",
-  //   };
-
-  //   this.formSubmit = this.formSubmit.bind(this);
-  //   this.validateForm = this.validateForm.bind(this);
-  //   this.changeAtivoState = this.changeAtivoState.bind(this);
-  // }
-
   const [formValues, setFormValues] = useState({});
 
   const handleInputChange = (evt) => {
@@ -41,13 +24,14 @@ function Form() {
   const collectCidade = (evt) => {
     setCidade(evt.target.value);
   };
+
   function validateForm() {
     if (
       nome === "" ||
       email === "" ||
       dataNasc === "" ||
-      // estado === "" ||
-      // cidade === "" ||
+      estado === "" ||
+      cidade === "" ||
       sexo === ""
     ) {
       alert("Erro: Todos os campos devem ser preenchidos!");
@@ -59,8 +43,18 @@ function Form() {
 
   function formSubmit() {
     if (validateForm()) {
-      const newData = { nome, email, dataNasc, estado, cidade, sexo, ativo };
       const formData = JSON.parse(localStorage.getItem("Form-Data")) || [];
+      var id = formData.length + 1;
+      const newData = {
+        id,
+        nome,
+        email,
+        dataNasc,
+        estado,
+        cidade,
+        sexo,
+        ativo,
+      };
       formData.push(newData);
       localStorage.setItem("Form-Data", JSON.stringify(formData));
     }
@@ -133,7 +127,7 @@ function Form() {
             className="horizontal-radio"
             type="radio"
             id="masc"
-            name="gender"
+            name="sexo"
             value="Masculino"
             onChange={(evt) => {
               setSexo(evt.target.value);
@@ -144,7 +138,7 @@ function Form() {
             className="horizontal-radio"
             type="radio"
             id="fem"
-            name="gender"
+            name="sexo"
             value="Feminino"
             onChange={(evt) => {
               setSexo(evt.target.value);
