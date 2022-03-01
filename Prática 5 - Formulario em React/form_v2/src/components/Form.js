@@ -41,10 +41,11 @@ function Form() {
     return true;
   }
 
-  function formSubmit() {
+  function formSubmit(evt) {
     if (validateForm()) {
       const formData = JSON.parse(localStorage.getItem("Form-Data")) || [];
       var id = formData.length + 1;
+
       const newData = {
         id,
         nome,
@@ -57,6 +58,8 @@ function Form() {
       };
       formData.push(newData);
       localStorage.setItem("Form-Data", JSON.stringify(formData));
+    } else {
+      evt.preventDefault();
     }
   }
 
@@ -68,7 +71,6 @@ function Form() {
     }
   }
 
-  // render() {
   return (
     <form name="Formulario">
       <div className="div-form">
@@ -113,12 +115,20 @@ function Form() {
 
         <div className="flex-container">
           <label className="label-left">Estado</label>
-          <DropdownEstados onChange={handleInputChange} />
+          <DropdownEstados
+            onChange={handleInputChange}
+            className={"select-box"}
+          />
         </div>
 
         <div className="flex-container">
           <label className="label-left">Cidade</label>
-          <DropdownCidades state={formValues.state} onChange={collectCidade} />
+          <DropdownCidades
+            state={formValues.state}
+            onChange={collectCidade}
+            selected={"null"}
+            className={"select-box"}
+          />
         </div>
 
         <div className="flex-container">
@@ -161,7 +171,9 @@ function Form() {
         <div className="flex-container-submit">
           <input
             className="submit-button"
-            onClick={formSubmit}
+            onClick={(evt) => {
+              formSubmit(evt);
+            }}
             type="submit"
             id="submit"
             value="Enviar"

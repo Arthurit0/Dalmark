@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { fetchEstados } from "../helpers/ibge";
 
-const DropdownEstados = ({ onChange = () => {} }) => {
+const DropdownEstados = ({
+  onChange = () => {},
+  selected = () => "empty-state",
+  className = () => {},
+}) => {
   const [estados, setEstados] = useState([]);
 
   useEffect(() => {
@@ -11,13 +15,17 @@ const DropdownEstados = ({ onChange = () => {} }) => {
   }, []);
 
   return (
-    <select className="select-box" name="state" id="state" onChange={onChange}>
+    <select className={className} name="state" id="state" onChange={onChange}>
       <option value="empty-state" id="empty-state">
         Selecione um Estado
       </option>
       {estados.map((estado, i) => {
         return (
-          <option key={i} value={estado.sigla}>
+          <option
+            key={i}
+            value={estado.sigla}
+            selected={estado.sigla === selected}
+          >
             {estado.nome}
           </option>
         );
