@@ -23,9 +23,7 @@ const DropdownCidades = ({
       onChange={onChange}
     >
       <option value="empty-city" id="empty-city">
-        {/* {selected !== "null" ? selected : " */}
         Selecione uma Cidade
-        {/* "} */}
       </option>
       {state !== null
         ? cidades.map((cidade) => {
@@ -33,7 +31,7 @@ const DropdownCidades = ({
               <option
                 key={cidade.id}
                 value={cidade.nome}
-                selected={cidade.id === selected}
+                selected={cidade.nome === selected}
               >
                 {cidade.nome}
               </option>

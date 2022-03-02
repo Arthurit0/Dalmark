@@ -15,17 +15,15 @@ function Table() {
   const [editSexo, setEditSexo] = useState("");
   const [editAtivo, setEditAtivo] = useState("Inativo");
 
-  const [estadoValues, setEstadoValues] = useState({});
+  // const [estadoValues, setEstadoValues] = useState({});
   const [editUserId, setEditUserId] = useState(null);
 
   const handleInputChange = (evt) => {
-    evt.preventDefault();
-    const { value, name } = evt.target;
-    setEstadoValues({ ...estadoValues, [name]: value });
+    // evt.preventDefault();
+    // const { value, name } = evt.target;
+    // setEstadoValues({ ...estadoValues, [name]: value });
     setEditEstado(evt.target.value);
   };
-
-  function startingInput() {}
 
   const handleEditClick = (evt, user) => {
     evt.preventDefault();
@@ -87,7 +85,6 @@ function Table() {
     setEditCidade(user.cidade);
     setEditSexo(user.sexo);
     setEditAtivo(user.ativo);
-    setEstadoValues(editEstado);
   }
 
   function populateTable(user) {
@@ -169,9 +166,9 @@ function Table() {
             className={"edit-box"}
           />
         </td>
-        <td onLoad={startingInput}>
+        <td>
           <DropdownCidades
-            state={estadoValues.state}
+            state={editEstado}
             onChange={collectCidade}
             selected={editCidade}
             className={"edit-box"}
@@ -286,37 +283,37 @@ function Table() {
     }
   }
 
+  // if (formData >= 0) {
   return (
     <div className="div-table">
       <h1>Tabela em React</h1>
 
-      <form>
-        <table className="table-container" id="table-exercicio">
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Email</th>
-              <th>Data de Nasc.</th>
-              <th>Estado</th>
-              <th>Cidade</th>
-              <th>Sexo</th>
-              <th>Ativo</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody id="table-body">
-            {usuarios.map((user, i) => (
-              <>
-                {editUserId === user.id
-                  ? editTable(user)
-                  : populateTable(user, i)}
-              </>
-            ))}
-          </tbody>
-        </table>
-      </form>
+      <table className="table-container" id="table-exercicio">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Data de Nasc.</th>
+            <th>Estado</th>
+            <th>Cidade</th>
+            <th>Sexo</th>
+            <th>Ativo</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          {usuarios.map((user, i) => (
+            <>
+              {editUserId === user.id
+                ? editTable(user)
+                : populateTable(user, i)}
+            </>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
+// }
 
 export default Table;

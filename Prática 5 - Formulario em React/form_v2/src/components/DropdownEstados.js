@@ -3,7 +3,7 @@ import { fetchEstados } from "../helpers/ibge";
 
 const DropdownEstados = ({
   onChange = () => {},
-  selected = () => "empty-state",
+  selected = () => {},
   className = () => {},
 }) => {
   const [estados, setEstados] = useState([]);

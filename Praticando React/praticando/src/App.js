@@ -1,59 +1,63 @@
 import React, { Component } from "react";
+import "./style.css";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nome: "",
-      email: "",
-      senha: "",
-      error: "",
+      numero: 0,
+      botao: "Start",
     };
 
-    this.cadastrar = this.cadastrar.bind(this);
+    this.timer = null;
+    this.startTimer = this.startTimer.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
-  cadastrar(evt) {
-    const { nome, email, senha } = this.state;
-    if (nome !== "" && (email !== "") & (senha !== "")) {
-      this.setState({ error: "" });
-      alert(`Nome: ${nome}\nEmail: ${email}\nSenha: ${senha}`);
+  startTimer() {
+    let state = this.state;
+
+    if (this.timer != null) {
+      clearInterval(this.timer);
+      this.timer = null;
+      state.botao = "Start";
     } else {
-      this.setState({ error: "Valores não preenhidos!" });
+      this.timer = setInterval(() => {
+        state.numero += 0.01;
+        this.setState(state);
+      }, 10);
+
+      state.botao = "Pause";
     }
 
-    evt.preventDefault();
+    this.setState(state);
+  }
+
+  reset() {
+    if (this.timer != null) {
+      clearInterval(this.timer);
+      this.timer = null;
+    }
+
+    let state = this.state;
+    state.numero = 0;
+    state.botao = "Start";
+    this.setState(state);
   }
 
   render() {
     return (
-      <div>
-        <h1>Novo Usuário</h1>
-        {this.state.error && <p>{this.state.error}</p>}
-        <form onSubmit={this.cadastrar}>
-          <label>Nome: </label>
-          <input
-            type="text"
-            value={this.state.nome}
-            onChange={(evt) => this.setState({ nome: evt.target.value })}
-          ></input>
-          <br />
-          <label>Email: </label>
-          <input
-            type="text"
-            value={this.state.email}
-            onChange={(evt) => this.setState({ email: evt.target.value })}
-          ></input>
-          <br />
-          <label>Senha: </label>
-          <input
-            type="password"
-            value={this.state.senha}
-            onChange={(evt) => this.setState({ senha: evt.target.value })}
-          ></input>
-          <br />
-          <button type="submit">Cadastrar</button>
-        </form>
+      <div className="container">
+        <img src={require("./assets/cronometro.png")} className="img" />
+        <a className="timer">{this.state.numero.toFixed(2)}</a>
+        <div className="button-area">
+          <a className="button" onClick={this.startTimer}>
+            {this.state.botao}
+          </a>
+          <a className="button" onClick={this.reset}>
+            Reset
+          </a>
+        </div>
       </div>
     );
   }

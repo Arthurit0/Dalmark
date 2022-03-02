@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import DropdownCidades from "./DropdownCidades";
 import DropdownEstados from "./DropdownEstados";
+import Moment from "moment";
 import "./Form.css";
+import "typeface-roboto";
 
 function Form() {
   const [nome, setNome] = useState("");
@@ -12,13 +14,13 @@ function Form() {
   const [sexo, setSexo] = useState("");
   const [ativo, setAtivo] = useState("Inativo");
 
-  const [formValues, setFormValues] = useState({});
+  // const [formValues, setFormValues] = useState({});
 
   const handleInputChange = (evt) => {
     setEstado(evt.target.value);
-    evt.preventDefault();
-    const { value, name } = evt.target;
-    setFormValues({ ...formValues, [name]: value });
+    // evt.preventDefault();
+    // const { value, name } = evt.target;
+    // setFormValues({ ...formValues, [name]: value });
   };
 
   const collectCidade = (evt) => {
@@ -124,7 +126,7 @@ function Form() {
         <div className="flex-container">
           <label className="label-left">Cidade</label>
           <DropdownCidades
-            state={formValues.state}
+            state={estado}
             onChange={collectCidade}
             selected={"null"}
             className={"select-box"}
