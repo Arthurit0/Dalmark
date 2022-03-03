@@ -23,6 +23,7 @@ function Table() {
     // const { value, name } = evt.target;
     // setEstadoValues({ ...estadoValues, [name]: value });
     setEditEstado(evt.target.value);
+    setEditCidade("");
   };
 
   const handleEditClick = (evt, user) => {
