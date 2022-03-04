@@ -19,11 +19,13 @@ function Table() {
   const [editUserId, setEditUserId] = useState(null);
 
   const handleInputChange = (evt) => {
-    // evt.preventDefault();
-    // const { value, name } = evt.target;
-    // setEstadoValues({ ...estadoValues, [name]: value });
-    setEditEstado(evt.target.value);
-    setEditCidade("");
+    evt.preventDefault();
+    const { value, name } = evt.target;
+    setEstadoValues({ ...estadoValues, [name]: value });
+    if (name === "estado") {
+      setEditEstado(evt.target.value);
+      setEditCidade("");
+    }
   };
 
   const handleEditClick = (evt, user) => {
@@ -132,7 +134,7 @@ function Table() {
             placeholder="Digite um nome..."
             name="nome"
             value={editNome}
-            onChange={(evt) => setEditNome(evt.target.value)}
+            onChange={handleInputChange}
           ></input>
         </td>
         <td>
@@ -143,9 +145,7 @@ function Table() {
             placeholder="Digite um Email..."
             name="email"
             value={editEmail}
-            onChange={(evt) => {
-              setEditEmail(evt.target.value);
-            }}
+            onChange={handleInputChange}
           ></input>
         </td>
         <td>
@@ -153,11 +153,9 @@ function Table() {
             className="edit-date"
             type="date"
             required="required"
-            name="data"
+            name="dataNasc"
             value={editDataNasc}
-            onChange={(evt) => {
-              setEditDataNasc(evt.target.value);
-            }}
+            onChange={handleInputChange}
           ></input>
         </td>
         <td>
@@ -185,9 +183,7 @@ function Table() {
                 name="sexo"
                 value="Masculino"
                 checked={editSexo === "Masculino"}
-                onChange={(evt) => {
-                  setEditSexo(evt.target.value);
-                }}
+                onChange={handleInputChange}
               />
               <label>Masc.</label>
             </div>
@@ -200,9 +196,7 @@ function Table() {
                 name="sexo"
                 value="Feminino"
                 checked={editSexo === "Feminino"}
-                onChange={(evt) => {
-                  setEditSexo(evt.target.value);
-                }}
+                onChange={handleInputChange}
               />
               <label>Femi.</label>
             </div>
@@ -211,10 +205,11 @@ function Table() {
         <td>
           <input
             className="horizontal-checkbox"
+            name="ativo"
             type="checkbox"
             id="active"
             checked={editAtivo === "Ativo"}
-            onChange={changeAtivoState}
+            onChange={handleInputChange}
           />
         </td>
         <td className="action-buttons">

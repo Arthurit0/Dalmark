@@ -17,10 +17,12 @@ function Form() {
   // const [formValues, setFormValues] = useState({});
 
   const handleInputChange = (evt) => {
-    setEstado(evt.target.value);
-    // evt.preventDefault();
-    // const { value, name } = evt.target;
-    // setFormValues({ ...formValues, [name]: value });
+    evt.preventDefault();
+    const { value, name } = evt.target;
+    setFormValues({ ...formValues, [name]: value });
+    if (name === "estado") {
+      setEstado(evt.target.value);
+    }
   };
 
   const collectCidade = (evt) => {
