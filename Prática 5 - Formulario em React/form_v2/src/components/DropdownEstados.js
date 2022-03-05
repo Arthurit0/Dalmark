@@ -15,7 +15,7 @@ const DropdownEstados = ({
   }, []);
 
   return (
-    <select className={className} name="state" id="state" onChange={onChange}>
+    <select className={className} name="estado" id="state" onChange={onChange}>
       <option value="empty-state" id="empty-state">
         Selecione um Estado
       </option>

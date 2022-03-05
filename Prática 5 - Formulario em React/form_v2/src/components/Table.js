@@ -15,16 +15,19 @@ function Table() {
   const [editSexo, setEditSexo] = useState("");
   const [editAtivo, setEditAtivo] = useState("Inativo");
 
-  // const [estadoValues, setEstadoValues] = useState({});
+  const [formValues, setformValues] = useState({});
   const [editUserId, setEditUserId] = useState(null);
 
   const handleInputChange = (evt) => {
     evt.preventDefault();
     const { value, name } = evt.target;
-    setEstadoValues({ ...estadoValues, [name]: value });
+    setformValues({ ...formValues, [name]: value });
     if (name === "estado") {
-      setEditEstado(evt.target.value);
+      setEditEstado(value);
       setEditCidade("");
+    }
+    if (name === "cidade") {
+      setEditCidade(value);
     }
   };
 
@@ -279,7 +282,6 @@ function Table() {
     }
   }
 
-  // if (formData >= 0) {
   return (
     <div className="div-table">
       <h1>Tabela em React</h1>
@@ -310,6 +312,5 @@ function Table() {
     </div>
   );
 }
-// }
 
 export default Table;

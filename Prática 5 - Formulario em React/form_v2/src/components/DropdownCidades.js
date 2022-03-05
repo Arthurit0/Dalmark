@@ -16,12 +16,7 @@ const DropdownCidades = ({
   }, [state]);
 
   return (
-    <select
-      className={className}
-      name="selectbox-city"
-      id="estado"
-      onChange={onChange}
-    >
+    <select className={className} name="cidade" id="estado" onChange={onChange}>
       <option value="empty-city" id="empty-city">
         Selecione uma Cidade
       </option>
