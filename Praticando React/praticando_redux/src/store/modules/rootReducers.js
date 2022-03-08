@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
 
-import reserve from "./reservas/reducer";
+import reserve from "../modules/reservas/reducer";
 
 export default combineReducers({ reserve });
