@@ -1,15 +1,34 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+import api from "../../services/api";
+import "./home.css";
+
 export default function Home() {
+  const [filmes, setFilmes] = useState([]);
+
+  useEffect(() => {
+    async function loadFilmes() {
+      // Fazer load dos dados da API pode demorar alguns segundos, logo, utilizamos uma função assíncrona
+      const resp = await api.get("r-api/?api=filmes/"); //Com o axios, não é necessário reescrever toda a url,
+      //  apenas a rota (pois já passamos a URL base em api.js)
+      setFilmes(resp.data);
+    }
+
+    loadFilmes();
+  }, []);
+
   return (
-    <div>
-      <h1>Bem-vindo a página Home!</h1>
-      <h2>
-        {" "}
-        <Link to="/sobre">Sobre</Link>
-        <br />
-        <Link to="/contato">Contato</Link>
-      </h2>
+    <div className="container">
+      <div className="lista-filmes">
+        {filmes.map((filme) => (
+          <article key={filme.id}>
+            <h1>{filme.nome}</h1>
+            <img src={filme.foto} alt={filme.nome} />
+            <Link to={`/filme/${filme.id}`}>Acessar</Link>
+          </article>
+        ))}
+      </div>
     </div>
   );
 }

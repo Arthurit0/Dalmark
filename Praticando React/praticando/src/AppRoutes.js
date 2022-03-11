@@ -1,24 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Home from "./pages/Home";
-import Sobre from "./pages/Sobre";
-import Contato from "./pages/Contato";
 import Header from "./components/Header";
-import Erro from "./pages/Erro";
+import Filme from "./pages/Filme";
 
 const AppRoutes = () => {
   return (
-    <div>
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/sobre" element={<Sobre />} />
-          <Route path="/contato" element={<Contato />} />
-          <Route path="*" element={<Erro />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/filme/:id" element={<Filme />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

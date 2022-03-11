@@ -1,10 +1,9 @@
-import React from "react";
+import "./styles.css";
 import AppRoutes from "./AppRoutes";
 
 export default function App() {
   return (
-    <div>
-      {/* Nosso Header Não funcionaria se criado aqui */}
+    <div className="app">
       <AppRoutes />
     </div>
   );
