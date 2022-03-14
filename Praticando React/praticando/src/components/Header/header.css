@@ -8,15 +8,47 @@ header {
   background-color: rgb(196, 43, 43);
 }
 
-.logo,
-.favoritos {
+.titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icone {
+  margin-right: 10px;
+}
+
+.titulo,
+.fav {
   text-decoration: none;
   font-size: 30px;
   color: #fff;
   cursor: pointer;
 }
 
-.favoritos {
+.fav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s;
+  font-size: 20px;
+  color: #fff;
+}
+
+.icone-fav {
+  margin-right: 5px;
+}
+
+.fav:hover {
+  cursor: pointer;
+}
+
+.fav:hover span,
+.fav:hover .icone-fav {
+  color: rgb(194, 194, 194);
+}
+
+/* .favoritos {
   background-color: #fff;
   border-radius: 5px;
   padding: 8px;
@@ -28,4 +60,4 @@ header {
 
 .favoritos:active {
   border: none;
-}
+} */
