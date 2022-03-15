@@ -55,3 +55,9 @@ por cima do botão, me bati de leves para fazer isso */
   text-decoration: none;
   color: #000;
 }
+
+.loading {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+}

@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
+import { toast } from "react-toastify";
 
 import api from "../../services/api";
 
@@ -42,20 +43,20 @@ export default function Filme() {
 
     // Se houver um filme salvo com este ID, alertar e ignorar
     if (hasFilme) {
-      alert("Você já possui esse filme salvo!");
+      toast.info("Você já possui esse filme salvo!");
       return;
     }
 
     // Caso o filme não esteja na storage, salvar
     filmesSalvos.push(filme);
     localStorage.setItem("filmes", JSON.stringify(filmesSalvos));
-    alert("Filme salvo com sucesso!");
+    toast.success("Filme salvo com sucesso!");
   }
 
   if (loading) {
     return (
-      <div className="filme-info">
-        <h1>Carregando Dados do Filme...</h1>
+      <div className="loading">
+        <img src={require("../../assets/loading.gif")} alt="loading..." />
       </div>
     );
   }

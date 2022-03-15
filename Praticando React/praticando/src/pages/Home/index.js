@@ -6,6 +6,7 @@ import "./home.css";
 
 export default function Home() {
   const [filmes, setFilmes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadFilmes() {
@@ -13,11 +14,19 @@ export default function Home() {
       const resp = await api.get("r-api/?api=filmes/"); //Com o axios, não é necessário reescrever toda a url,
       //  apenas a rota (pois já passamos a URL base em api.js)
       setFilmes(resp.data);
+      setLoading(false);
     }
 
     loadFilmes();
   }, []);
 
+  if (loading) {
+    return (
+      <div className="loading">
+        <img src={require("../../assets/loading.gif")} alt="loading..." />
+      </div>
+    );
+  }
   return (
     <div className="container">
       <div className="lista-filmes">

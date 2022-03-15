@@ -3,7 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* width: 800px; */
+
+  position: relative;
 }
 
 .lista-filmes {
@@ -52,4 +53,10 @@
 .lista-filmes article a:hover {
   transition: 0.5s;
   background-color: rgb(255, 71, 71);
+}
+
+.loading {
+  position: absolute;
+  top: 40%;
+  left: 40%;
 }
