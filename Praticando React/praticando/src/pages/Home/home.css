@@ -3,8 +3,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  position: relative;
 }
 
 .lista-filmes {
@@ -55,8 +53,7 @@
   background-color: rgb(255, 71, 71);
 }
 
-.loading {
-  position: absolute;
-  top: 40%;
-  left: 40%;
+.loading img {
+  margin-top: 30vh;
+  width: 200px;
 }
