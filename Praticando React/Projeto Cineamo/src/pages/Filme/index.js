@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import api from "../../services/api";
 
 import "./filme-info.css";
+import "../../assets/loading.css";
 
 export default function Filme() {
   const { id } = useParams();

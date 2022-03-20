@@ -52,8 +52,3 @@
   transition: 0.5s;
   background-color: rgb(255, 71, 71);
 }
-
-.loading img {
-  margin-top: 30vh;
-  width: 200px;
-}
