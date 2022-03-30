@@ -1,12 +1,12 @@
-const EventEmitter = require("events");
-const eventEmitter = new EventEmitter();
+const http = require("http");
 
-eventEmitter.on("start", () => {
-  console.log("Durante");
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+  res.write("Oi http");
+  res.end();
 });
 
-console.log("Antes");
-
-eventEmitter.emit("start");
-
-console.log("Depois");
+server.listen(port, () => {
+  console.log(`Servidor rodando na porta:${port}`);
+});
