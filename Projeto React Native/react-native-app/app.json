@@ -1,10 +1,18 @@
 {
   "expo": {
-    "name": "react-native-app",
+    "name": "teste-app-dalmark",
     "slug": "react-native-app",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"],
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "icon": "./assets/logo.png",
+    "android": {
+      "package": "com.yourcompany.yourappname",
+      "versionCode": 1
+    }
   }
 }
